@@ -1,23 +1,22 @@
 package service;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-public class PrintService {
+public class PrintService<Type> {
 	
-	List<Double> list = new ArrayList<>();
+	List<Type> list = new ArrayList<>();
 	
 	public PrintService() {
 	}
 	
-	public void addValue(Double value) {
+	public void addValue(Type value) {
 		list.add(value);
 	}
 	
-	public Double fist() {
+	public Type fist() {
 		if (list.isEmpty()) {
-			return null;
+			throw new IllegalStateException("The list is empty");
 		}
 		else {
 			return list.get(0);
@@ -25,11 +24,14 @@ public class PrintService {
 	}
 	
 	public void print() {
-			Collections.sort(list);
-			
-			for(Double l : list) {
-				System.out.print(l + ",");
-			}
+		System.out.print("[");
+		if (!list.isEmpty()) {
+			System.out.print(list.get(0));
+		}
+		for (int i = 1; i < list.size(); i++) {
+			System.out.print(", " + list.get(i));
+		}
+		System.out.println("]");
 	}
 
 }

@@ -13,7 +13,7 @@ public class Program {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		PrintService ps  = new PrintService();
+		PrintService<Double> ps  = new PrintService<>();
 		
 			System.out.println("How many values?");
 			
@@ -25,9 +25,7 @@ public class Program {
 				ps.addValue(value);
 			}
 			
-			System.out.print("[");
 			ps.print();
-			System.out.print("]");
 			
 			System.out.println();
 			
